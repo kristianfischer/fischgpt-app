@@ -1,6 +1,4 @@
 export interface ChatResponse {
-    success: boolean,
-    data: {
         response: string,
         metadata: {
             input_tokens: number,
@@ -14,6 +12,5 @@ export interface ChatResponse {
                 max_length: number,
                 top_p: number,
             }
-        }
     }
 }

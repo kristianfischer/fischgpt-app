@@ -6,5 +6,7 @@ export const useChat = (query: string) => {
     return useQuery({
         queryKey: [QUERY_KEY.CHAT, query],
         queryFn: () => chat(query),
-    });
+        enabled: !!query,
+    }
+);
 };
