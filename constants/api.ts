@@ -6,4 +6,6 @@ if (!BASE_URL) {
 
 export const API = {
   BASE_URL,
+  CHAT: "/chat",
+  WAKE: "/wake",
 } as const;
