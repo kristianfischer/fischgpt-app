@@ -34,23 +34,23 @@ export default function DesignPage() {
             FischGPT
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Complete end-to-end development of a custom language model from architecture to deployment
+            A from-scratch GPT-2 style transformer with Flash Attention and supervised fine-tuning
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <ModelOverviewCard title="Parameters" value="124M" />
+          <ModelOverviewCard title="Parameters" value="~124M" />
           <ModelOverviewCard title="Pretrain Tokens" value="45B" />
           <ModelOverviewCard title="SFT Tokens" value="25M" />
-          <ModelOverviewCard title="Training Cost" value="$208.74" />
+          <ModelOverviewCard title="Final Val Loss" value="1.726" />
         </div>
         
         <Timeline />
 
         <TimelineSection
           stepNumber={1}
-          title="Model Architecture"
-          description="GPT-2 Small configuration with 124M parameters"
+          title="Architecture Design"
+          description="From-scratch GPT-2 implementation with Flash Attention"
           icon={<CpuIcon className="w-6 h-6" />}
           isExpanded={expandedSections.architecture}
           onToggle={() => toggleSection('architecture')}
@@ -59,37 +59,58 @@ export default function DesignPage() {
             <SpecificationGrid
               title="Core Architecture"
               items={[
-                { label: "Base Model", value: "GPT-2 Small" },
-                { label: "Parameters", value: "124M" },
-                { label: "Layers (n_layer)", value: "12" },
-                { label: "Embedding Size (n_embd)", value: "768" }
+                { label: "Model Type", value: "GPT-2 Style Decoder" },
+                { label: "Parameters", value: "~124M" },
+                { label: "Layers", value: "12" },
+                { label: "Hidden Size ", value: "768" }
               ]}
             />
             <SpecificationGrid
               title="Attention Mechanism"
               items={[
-                { label: "Attention Heads (n_head)", value: "12" },
+                { label: "Attention Heads", value: "12" },
                 { label: "Head Dimension", value: "64" },
-                { label: "Context Length (block_size)", value: "1024 tokens" },
-                { label: "Position Encoding", value: "Learned Embeddings" }
+                { label: "Context Length", value: "1024 tokens" },
+                { label: "Implementation", value: "Flash Attention" }
               ]}
             />
             <SpecificationGrid
-              title="Technical Details"
+              title="Technical Features"
               items={[
                 { label: "Vocabulary Size", value: "50,304" },
                 { label: "Tokenizer", value: "GPT-2 BPE" },
-                { label: "Activation Function", value: "GELU" },
-                { label: "Architecture", value: "Decoder-only Transformer" }
+                { label: "Activation", value: "GELU (tanh approx)" },
+                { label: "Optimizer", value: "AdamW" }
               ]}
             />
           </div>
+
+          <InfoSection title="Implementation Highlights" columns={2}>
+            <DetailCard
+              title="Custom Components"
+              items={[
+                "CasualSelfAttention: Multi-head with causal masking",
+                "MLP: Feed-forward with GELU activation",
+                "Block: Pre-layer normalization",
+                "GPT: Complete model with tied embeddings"
+              ]}
+            />
+            <DetailCard
+              title="Advanced Features"
+              items={[
+                "Flash Attention: F.scaled_dot_product_attention",
+                "Custom weight initialization",
+                "Weight tying: Shared input/output embeddings",
+                "Professional separation of concerns"
+              ]}
+            />
+          </InfoSection>
         </TimelineSection>
 
         <TimelineSection
           stepNumber={2}
           title="Pretraining"
-          description="45B tokens from FineWeb dataset with distributed training"
+          description="45B tokens from FineWeb with distributed training at ~1.2M tokens/sec"
           icon={<DatabaseIcon className="w-6 h-6" />}
           isExpanded={expandedSections.pretraining}
           onToggle={() => toggleSection('pretraining')}
@@ -98,31 +119,30 @@ export default function DesignPage() {
             <SpecificationGrid
               title="Dataset: FineWeb"
               items={[
-                { label: "Total Tokens", value: "45,000,000,000", isMono: true },
-                { label: "Source", value: "Hugging Face FineWeb" },
-                { label: "Quality", value: "Deduplicated & Filtered" },
-                { label: "Language", value: "English" }
+                { label: "Tokens/Epoch", value: "10B", isMono: true },
+                { label: "Epochs", value: "4.5" },
+                { label: "Steps", value: "80000", isMono: true },
+                { label: "Batch Size", value: "524288" }
               ]}
             />
             <SpecificationGrid
-              title="Compute Infrastructure"
+              title="Training"
               items={[
-                { label: "Framework", value: "PyTorch DDP" },
-                { label: "Backend", value: "NCCL" },
-                { label: "Device Support", value: "CUDA/MPS/CPU" },
-                { label: "Precision", value: "Mixed (bfloat16)" },
-                { label: "Total Cost", value: "$208.74" }
+                { label: "HellaSwag", value: "33.3%", isMono: true },
+                { label: "Val Loss", value: "2.9803", isMono: true },
+                { label: "Framework", value: "PyTorch DDP 8x NVDIA A100" },
+                { label: "Total Cost", value: "$208.74 ($$$!!!)" }
               ]}
             />
           </div>
 
-          <InfoSection title="Training Configuration" columns={3}>
+          <InfoSection title="Pretraining Configuration" columns={3}>
             <DetailCard
               title="Optimization"
               items={[
-                "Optimizer: AdamW",
                 "Max LR: 1.8e-3",
                 "Min LR: 1.8e-4",
+                "Warmup Steps: 750",
                 "Weight Decay: 0.1",
                 "Gradient Clipping: 1.0"
               ]}
@@ -131,112 +151,67 @@ export default function DesignPage() {
               title="Training Dynamics"
               items={[
                 "Micro Batch: 64",
-                "Total Batch: 524,288 tokens",
-                "Sequence Length: 1024",
                 "Mixed Precision: bfloat16",
-                "Gradient Accumulation: Auto"
               ]}
-            />
-            <DetailCard
-              title="Scheduling"
-              items={[
-                "Warmup Steps: 715",
-                "Max Steps: 76,292",
-                "LR Schedule: Cosine",
-                "Eval Frequency: 250 steps",
-                "Checkpointing: 5000 steps"
-              ]}
-            />
-          </InfoSection>
-
-          <InfoSection title="Implementation Details" columns={2}>
-            <DetailCard
-              title="Evaluation & Monitoring"
-              items={[
-                "Validation: Cross-entropy loss",
-                "Benchmark: HellaSwag accuracy",
-                "Generation: Top-k sampling (k=50)",
-                "Logging: Real-time metrics"
-              ]}
-            />
-            <DetailCard
-              title="Advanced Features"
-              items={[
-                "Tokenizer: tiktoken (GPT-2)",
-                "Autocast: Automatic mixed precision",
-                "Compile: torch.compile ready",
-                "Checkpointing: State preservation"
-              ]}
-            />
+            />   
           </InfoSection>
         </TimelineSection>
 
         <TimelineSection
           stepNumber={3}
           title="Supervised Fine-Tuning"
-          description="OASST1 conversational data with generation monitoring"
+          description="25M tokens from OpenAssistant/oasst1 with distributed training at ~1.2M tokens/sec"
           icon={<CpuIcon className="w-6 h-6" />}
           isExpanded={expandedSections.sft}
           onToggle={() => toggleSection('sft')}
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <SpecificationGrid
-              title="OASST1 Dataset"
+              title="Dataset: OASST1"
               items={[
-                { label: "Dataset", value: "OpenAssistant Conversations" },
-                { label: "Format", value: "Conversational pairs" },
-                { label: "Special Tokens", value: "<|user|> <|assistant|>" },
-                { label: "Languages", value: "Multilingual" },
-                { label: "Quality", value: "Human-ranked" }
+                { label: "Tokens", value: "25M", isMono: true },
+                { label: "Epochs", value: "3" },
+                { label: "Steps", value: "20000", isMono: true },
+                { label: "Batch Size", value: "16384" }
               ]}
             />
             <SpecificationGrid
-              title="SFT Configuration"
+              title="Training"
               items={[
-                { label: "Base Model", value: "Pretrained checkpoint" },
-                { label: "Max LR", value: "8e-6", isMono: true },
-                { label: "Min LR", value: "8e-7", isMono: true },
-                { label: "Micro Batch", value: "16" },
-                { label: "Total Batch", value: "16,384 tokens" }
+                { label: "Format", value: "Conversational" },
+                { label: "Val Loss", value: "1.725750", isMono: true },
+                { label: "Framework", value: "PyTorch NVDIA A100" },
+                { label: "Base Model", value: "Pretraining Checkpoint" }
               ]}
             />
           </div>
 
-          <InfoSection title="Training Configuration" columns={3}>
+          <InfoSection title="SFT Configuration" columns={3}>
             <DetailCard
               title="Optimization"
               items={[
-                "Weight Decay: 0.01",
+                "Max LR: 8e-6",
+                "Min LR: 8e-7",
                 "Warmup Steps: 600",
-                "Max Steps: 20,000",
-                "LR Schedule: Cosine"
+                "Special Tokens: <|user|> <|assistant|>"
               ]}
             />
             <DetailCard
-              title="Monitoring"
+              title="Use Cases"
               items={[
-                "Eval Frequency: 1000 steps",
-                "Checkpoint: 1500 steps",
-                "Generation: Every 1500 steps",
-                "Validation Steps: 20"
-              ]}
-            />
-            <DetailCard
-              title="Generation"
-              items={[
-                "Temperature: 0.8",
-                "Top-k: 50",
-                "Max Length: 200",
-                "Test Prompts: 3 variants"
+                "Conversational AI",
+                "Code completion",
+                "Creative writing",
+                "Educational content"
               ]}
             />
           </InfoSection>
         </TimelineSection>
-              
+
         <TimelineSection
           stepNumber={4}
-          title="Deployment & Infrastructure"
-          description="Production hosting on Hugging Face with real-time inference"
+          title="Deployment & Production"
+          description="Hugging Face hosting with optimized inference and generation capabilities"
           icon={<ServerIcon className="w-6 h-6" />}
           isExpanded={expandedSections.deployment}
           onToggle={() => toggleSection('deployment')}
@@ -244,32 +219,43 @@ export default function DesignPage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <SpecificationGrid
-              title="Hugging Face Hub"
+              title="Hugging Face Spaces"
               items={[
-                { label: "Repository", value: "fischgpt/fischgpt-sft" },
+                { label: "Repository", value: "kristianfischerai12345/fischgpt-sft" },
                 { label: "Format", value: "PyTorch + Safetensors" },
-                { label: "Model Size", value: "2.6 GB" },
-                { label: "License", value: "MIT" }
-              ]}
-            />
-            <SpecificationGrid
-              title="Inference Infrastructure"
-              items={[
-                { label: "Backend", value: "Express.js + PyTorch" },
-                { label: "GPU", value: "NVIDIA RTX 4090" },
-                { label: "Batch Size", value: "1 (Real-time)" },
-                { label: "Latency", value: "~50ms" }
+                { label: "System Prompting", value: "Express.js" },
+                { label: "Hardware", value: "CPU" }
               ]}
             />
           </div>
 
-          <InfoSection title="Production Metrics">
+          <InfoSection title="Performance Metrics" columns={1}>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <MetricCard value="47.3" label="Tokens/sec" />
-              <MetricCard value="99.7%" label="Uptime" />
-              <MetricCard value="2.1GB" label="Memory Usage" />
-              <MetricCard value="23ms" label="Avg Latency" />
+              <MetricCard value="1024" label="Max Context" />
+              <MetricCard value="~124M" label="Parameters" />
+              <MetricCard value="1.726" label="Final Loss" />
+              <MetricCard value="33.3%" label="HellaSwag" />
             </div>
+          </InfoSection>
+
+          <InfoSection title="Usage Examples" columns={2}>
+            <DetailCard
+              title="Chat Format"
+              items={[
+                'chat_format("Your question here")',
+                'Returns: "<|user|>Your question<|assistant|>"',
+                "Optimized for conversational AI",
+                "Instruction following capabilities"
+              ]}
+            />
+            <DetailCard
+              title="Generation Options"
+              items={[
+                "Temperature: 0.8 (recommended)",
+                "Top-p sampling: Configurable",
+                "Max length: Up to 400 tokens",
+              ]}
+            />
           </InfoSection>
         </TimelineSection>
 
