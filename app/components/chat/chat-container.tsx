@@ -11,7 +11,23 @@ export default function ChatContainer() {
     const [messages, setMessages] = useState<MessageType[]>([
         {
           id: "1",
-          content: "Hello! I'm FischGPT, your AI assistant. How can I help you today?",
+          content: `Welcome to FischGPT!
+
+I'm a custom AI assistant powered by FischGPT-SFT - a supervised fine-tuned model I've developed and deployed. This isn't just another ChatGPT clone - it's a showcase of my full-stack AI engineering capabilities.
+
+What I've built here:
+
+> Custom GPT-2/3 Model: FischGPT-SFT with optimized parameters for conversational tasks
+
+> Modern Chat Interface: Built with Next.js 15, React 19, and Tailwind CSS v4
+
+> Express Backend: Node.js API server handling model inference and system prompting
+
+> Clean Architecture: Scalable component structure using shadcn/ui design system
+
+Feel free to ask me anything about AI, software development, or my projects. You can also explore my work through the social links in the header or check out my resume!
+
+How can I help you today?`,
           role: "assistant",
           timestamp: new Date(),
         },
