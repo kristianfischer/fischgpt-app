@@ -1,66 +1,25 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { GithubIcon, GlobeIcon, BotIcon, InfoIcon } from "lucide-react";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { GithubIcon, GlobeIcon, BotIcon, PaletteIcon } from "lucide-react";
+import Link from "next/link";
+import ModelPopover from "./model-popover";
 
 export default function Header() {
-    return (
-        <div className="flex items-center justify-between p-2 px-4 border-b border-border bg-background/80 backdrop-blur-sm flex-shrink-0">
-        <div className="flex items-center gap-2">
-          <h1 className="text-lg font-semibold">FischGPT</h1>
-          
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                variant="ghost"
-                size="sm"
-                className="h-3 w-3 pt-0.5 text-muted-foreground hover:text-foreground"
-              >
-                <InfoIcon className="w-3 h-3" />
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-80" align="start">
-              <div className="space-y-3">
-                <div>
-                  <h3 className="font-semibold text-sm">FischGPT Model</h3>
-                  <p className="text-xs text-muted-foreground">AI Assistant powered by custom SFT model</p>
-                </div>
-                
-                <div className="space-y-2 text-xs">
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Model:</span>
-                    <span>FischGPT-SFT</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Temperature:</span>
-                    <span>0.8</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Max Length:</span>
-                    <span>400 tokens</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Top P:</span>
-                    <span>0.9</span>
-                  </div>
-                </div>
-
-                <div className="pt-2 border-t border-border">
-                  <p className="text-xs text-muted-foreground">
-                    Custom trained model optimized for conversational AI tasks with supervised fine-tuning.
-                  </p>
-                </div>
-              </div>
-            </PopoverContent>
-          </Popover>
-        </div>
+  return (
+    <div className="flex items-center justify-between p-2 px-4 border-b border-border bg-background/80 backdrop-blur-sm flex-shrink-0">
+      <div className="flex items-center gap-2">
+        <Link href="/">
+          <h1 className="text-lg font-semibold cursor-pointer hover:text-primary transition-colors">FischGPT</h1>
+        </Link>
         
+        <ModelPopover />
+      </div>
+      
+      <div className="flex items-center gap-2">
+        {/* Social Links Group */}
         <div className="flex items-center gap-2">
+          {/* Hugging Face Button */}
           <Button
             variant="outline"
             size="sm"
@@ -68,7 +27,7 @@ export default function Header() {
             className="flex items-center gap-2"
           >
             <a
-              href="https://huggingface.co/kristianfischerai12345/fischgpt-sft"
+              href="https://huggingface.co"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -76,6 +35,7 @@ export default function Header() {
             </a>
           </Button>
 
+          {/* GitHub Button */}
           <Button
             variant="outline"
             size="sm"
@@ -83,7 +43,7 @@ export default function Header() {
             className="flex items-center gap-2"
           >
             <a
-              href="https://github.com/kristianfischer/fischgpt"
+              href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -91,6 +51,7 @@ export default function Header() {
             </a>
           </Button>
 
+          {/* Personal Website Button */}
           <Button
             variant="outline"
             size="sm"
@@ -98,7 +59,7 @@ export default function Header() {
             className="flex items-center gap-2"
           >
             <a
-              href="https://kristian-fischer.com/fischgpt.html"
+              href="https://kristian-fischer.com"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -106,7 +67,37 @@ export default function Header() {
             </a>
           </Button>
         </div>
-      </div>
 
-    );
+        {/* Separator */}
+        <div className="w-px h-6 bg-border mx-2"></div>
+
+        {/* Page Navigation Group */}
+        <div className="flex items-center gap-2">
+          {/* Design Page Button */}
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="flex items-center gap-2"
+          >
+            <Link href="/design">
+              <PaletteIcon className="w-4 h-4" />
+            </Link>
+          </Button>
+
+          {/* About Page Button
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+            className="flex items-center gap-2"
+          >
+            <Link href="/about">
+              <UserIcon className="w-4 h-4" />
+            </Link>
+          </Button> */}
+        </div>
+      </div>
+    </div>
+  );
 }
