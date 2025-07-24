@@ -2,7 +2,7 @@ import { BotIcon, UserIcon } from "lucide-react";
 import type { Message } from "@/lib/types/message";
 import { useState } from "react";
 
-export default function Message({ message, index }: { message: Message, index: number }) {
+export default function Message({ message }: { message: Message }) {
 
     const [isLoading] = useState(false);
     
@@ -26,8 +26,7 @@ export default function Message({ message, index }: { message: Message, index: n
             key={message.id}
             className={`group flex gap-4 ${
             message.role === "user" ? "justify-end" : "justify-start"
-            } animate-in slide-in-from-bottom-2 duration-300`}
-            style={{ animationDelay: `${index * 50}ms` }}
+            }`}
         >
             {message.role === "assistant" && (
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center flex-shrink-0 shadow-sm">
