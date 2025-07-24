@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { FileTextIcon } from "lucide-react";
 import { wake } from "@/lib/services/wake-service";
-import ChatContainer from "@/app/components/chat/chat-container";
-import ResumeContainer from "@/app/components/resume-container";
+import ChatContainer from "@/app/(dashboard)/(home)/components/chat/chat-container";
+import ResumeContainer from "@/app/(dashboard)/(home)/components/resume-container";
 
 export default function Home() {
   const [showResume, setShowResume] = useState(false);
