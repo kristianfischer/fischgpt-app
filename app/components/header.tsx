@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { GithubIcon, GlobeIcon, BotIcon, PaletteIcon } from "lucide-react";
+import { GithubIcon, GlobeIcon, BotIcon, PaletteIcon, UserIcon } from "lucide-react";
 import Link from "next/link";
 import ModelPopover from "./model-popover";
 
@@ -85,17 +85,17 @@ export default function Header() {
             </Link>
           </Button>
 
-          {/* About Page Button
+          {/* About Page Button */}
           <Button
             variant="outline"
             size="sm"
             asChild
             className="flex items-center gap-2"
           >
-            <Link href="/about">
+            <Link href="/">
               <UserIcon className="w-4 h-4" />
             </Link>
-          </Button> */}
+          </Button>
         </div>
       </div>
     </div>

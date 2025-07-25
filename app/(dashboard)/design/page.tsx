@@ -30,11 +30,12 @@ export default function DesignPage() {
     <div className="flex flex-col h-full p-6 bg-gradient-to-br from-background to-muted/20 overflow-y-auto">
       <div className="max-w-6xl mx-auto space-y-8 w-full">
         <div className="text-center space-y-4">
-          <h1 className="text-5xl font-bold text-foreground">
-            FischGPT
+          <h1 className="text-5xl font-bold text-foreground py-8">
+            FischGPT Design Specs
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            A from-scratch GPT-2 style transformer with Flash Attention and supervised fine-tuning
+          Building a GPT-2 from scratch: A journey through transformer architecture, 
+          distributed training, and production deployment
           </p>
         </div>
         

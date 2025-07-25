@@ -50,7 +50,6 @@ How can I help you today?`,
         const input = inputRef.current?.value?.trim();
         if (!input || isLoading) return;
     
-        // Add user message immediately (optimistic update)
         const userMessage: MessageType = {
           id: Date.now().toString(),
           content: input,
@@ -62,13 +61,11 @@ How can I help you today?`,
         setIsLoading(true);
         setError(null);
     
-        // Trigger input reset
         setResetTrigger(prev => prev + 1);
     
         try {
           const response = await chat(input);
           
-          // Add AI response to messages
           const aiMessage: MessageType = {
             id: (Date.now() + 1).toString(),
             content: response.response,
@@ -81,7 +78,6 @@ How can I help you today?`,
           console.error('Chat error:', err);
           setError('Failed to send message. Please try again.');
           
-          // Add an error message
           const errorMessage: MessageType = {
             id: (Date.now() + 1).toString(),
             content: "Sorry, I encountered an error. Please try again.",
@@ -96,14 +92,12 @@ How can I help you today?`,
 
         return (
         <div className="flex flex-col h-full">
-            {/* Messages Area - Scrollable */}
             <div className="flex-1 overflow-y-auto min-h-0">
                 <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
                 {messages.map((message) => (
                     <Message key={message.id} message={message} />
                 ))}
                 
-                {/* Loading indicator */}
                 {isLoading && (
                     <div className="flex gap-4 justify-start animate-in slide-in-from-bottom-2 duration-300">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-primary/80 flex items-center justify-center flex-shrink-0 shadow-sm">
@@ -119,7 +113,6 @@ How can I help you today?`,
                     </div>
                 )}
 
-                {/* Error display */}
                 {error && (
                     <div className="flex justify-center">
                     <div className="bg-destructive/10 border border-destructive/20 rounded-lg px-4 py-2 text-destructive text-sm">
@@ -132,10 +125,9 @@ How can I help you today?`,
                 </div>
             </div>
 
-            {/* User Input - Fixed at Bottom */}
             <div className="flex-shrink-0">
                 <UserInput 
-                    key={resetTrigger} // Forces re-render to reset internal state
+                    key={resetTrigger}
                     inputRef={inputRef} 
                     onSend={handleSend} 
                     isLoading={isLoading}
