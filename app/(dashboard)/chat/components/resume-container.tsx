@@ -24,10 +24,8 @@ export default function ResumeContainer({showResume}: {showResume: boolean}) {
         `}>
           {showResume && (
             <div className="h-full flex flex-col w-full min-h-0">    
-              {/* PDF Viewer Container */}
               <div className="flex-1 p-2 overflow-hidden min-h-0">
                 <div className="h-full w-full bg-background rounded-lg border border-border relative overflow-hidden">
-                  {/* PDF Embed */}
                   <iframe
                     src="/resume.pdf#toolbar=0&navpanes=0&scrollbar=1&zoom=page-fit&view=FitH"
                     className="w-full h-full border-0"
@@ -36,7 +34,6 @@ export default function ResumeContainer({showResume}: {showResume: boolean}) {
                     onError={handlePdfError}
                   />
                   
-                  {/* Loading State */}
                   {!pdfLoaded && !pdfError && (
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm bg-background rounded-lg">
                       <div className="text-center">
@@ -46,7 +43,6 @@ export default function ResumeContainer({showResume}: {showResume: boolean}) {
                     </div>
                   )}
                   
-                  {/* Error/Fallback State */}
                   {pdfError && (
                     <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm bg-background rounded-lg">
                       <div className="text-center">
