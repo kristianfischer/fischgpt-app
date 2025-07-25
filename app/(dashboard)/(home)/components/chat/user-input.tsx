@@ -17,7 +17,7 @@ export default function UserInput({ inputRef, onSend, isLoading }: { inputRef: R
 
 
     return (
-        <div className="border-t border-border bg-background/80 backdrop-blur-sm">
+        <div className="border-border bg-background/80 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto p-4">
           <div className="relative">
             <Input
@@ -27,7 +27,7 @@ export default function UserInput({ inputRef, onSend, isLoading }: { inputRef: R
               onKeyPress={handleKeyPress}
               placeholder="Message FischGPT..."
               disabled={isLoading}
-              className="pr-12 py-3 text-sm rounded-xl border-border/50 focus:border-primary/50 focus:ring-primary/20 bg-background/50 placeholder:text-muted-foreground/60"
+              className="pr-12 py-3 text-sm rounded-xl border-primary/20 bg-background/50 placeholder:text-muted-foreground/60"
             />
             <Button
               variant="ghost"

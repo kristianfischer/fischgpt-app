@@ -110,7 +110,7 @@ export default function DesignPage() {
         <TimelineSection
           stepNumber={2}
           title="Pretraining"
-          description="45B tokens from FineWeb with distributed training at ~1.2M tokens/sec"
+          description="45B tokens from FineWeb with distributed training at ~1.2M tokens/sec for 12 hours"
           icon={<DatabaseIcon className="w-6 h-6" />}
           isExpanded={expandedSections.pretraining}
           onToggle={() => toggleSection('pretraining')}

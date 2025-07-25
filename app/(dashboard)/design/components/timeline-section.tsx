@@ -25,10 +25,10 @@ export default function TimelineSection({
   return (
     <div className="relative">
       {!isLast && (
-        <div className="absolute left-6 top-0 w-px h-full bg-gradient-to-b from-primary via-border to-border hidden md:block"></div>
+        <div className="absolute left-6 top-0 w-px h-full from-primary via-border to-border hidden md:block"></div>
       )}
       {isLast && (
-        <div className="absolute left-6 top-0 w-px h-8 bg-gradient-to-b from-primary to-border hidden md:block"></div>
+        <div className="absolute left-6 top-0 w-px h-8 from-primary to-border hidden md:block"></div>
       )}
       
       <div className="border border-border rounded-lg bg-background/50 relative">
