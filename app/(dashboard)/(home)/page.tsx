@@ -19,7 +19,7 @@ export default function Home() {
                   FischGPT
                 </h1>
                 <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto pt-3">
-                  The first ever <i>Kristian Fischer</i> finetuned LLM. Learn about his charming qualites, riveting experiences, and the journey that led to this moment. 
+                  The first ever <i>Kristian Fischer</i> finetuned LLM. Uncover his quirks, past lives, and the mindset behind the project.
                 </p>
               </div>
               
