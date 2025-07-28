@@ -22,7 +22,7 @@ export default function Paper() {
               Like any great learning experience, I began this project by admitting what I don&apos;t know.
             </p>
             <p> I’ve had a decent grasp of LLMs for a while, though mostly from the sidelines. I’d seen the usual transformer diagrams on YouTube, didn’t blink at the idea of a 5,000-dimensional positional embedding, and could offer a passable explanation of tokenization; though mostly to people who didn’t ask. </p> 
-            <p> Earlier this summer, I started thinking more deliberately about how I wanted to engage with this moment in AI. I realized I wasn’t satisfied interpreting the work of others or staying at the surface. I wanted to follow the ideas all the way down; not out of obligation or ambition, but because I sinply don’t know how to be interested in something halfway. </p>
+            <p> Earlier this summer, I started thinking more deliberately about how I wanted to engage with this moment in AI. I realized I wasn’t satisfied interpreting the work of others or staying at the surface. I wanted to follow the ideas all the way down; not out of obligation or ambition, but because I simply don’t know how to be interested in something halfway. </p>
             <p className="italic font-medium text-foreground">
               So, I built a GPT-2 model from scratch specialized to answer questions about me.
             </p>
