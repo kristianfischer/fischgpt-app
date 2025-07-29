@@ -84,10 +84,7 @@ export default function Paper() {
               The last step in this journey was deploying it in such a way that it could be effectively showcased as a learing experiment. I utilized HuggingFace primarily to do so. The first step was uploading 3 models to HF. These three were my pretrain best loss, my pretrain best hellaswag eval, and my sft conversational model. I then created a HuggingFace Space as an API endpoint, to be able to query my model externally.
             </p>
             <p>
-              Then came the full stack engineering. I built the application you are reading this on in NextJS, Shadcn - your classic FE stack. For the back end I needed a quick, pretty narrow implementation which served one main purpose: act as a middle man, wrapping each query in a system prompt contextualizing myself in order to get the model to answer questions about me. I utilized ExpressJS for this.
-            </p>
-            <p>
-              During the time of my writing, the system prompting needs to be improved. I am thinking of a baby RAG implemenation, as my current system prompt is taking up too much of the context window currently.
+              Then came the full stack engineering. I built the application you are reading this on in Next.js and Shadcn -- your classic FE stack. For the back end I needed a focused, lightweight implementation that served one main purpose: act as a middleman, wrapping each query in a system prompt contextualizing myself to get the model to answer questions about me. I used Express.js for this, and layered in a RAG (Retrieval-Augmented Generation) system using ChromaDB. My resume was split into semantically meaningful chunks (this is code for bullet by bullet) and embedded so that the backend could retrieve relevant context on each query, allowing for accurate, personalized responses.
             </p>
           </div>
         </section>
