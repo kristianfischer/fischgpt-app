@@ -212,7 +212,7 @@ export default function DesignPage() {
         <TimelineSection
           stepNumber={4}
           title="Deployment & Production"
-          description="Hugging Face hosting with optimized inference and generation capabilities"
+          description="Hugging Face hosting with ChromaDB RAG pipeline for enhanced context retrieval"
           icon={<ServerIcon className="w-6 h-6" />}
           isExpanded={expandedSections.deployment}
           onToggle={() => toggleSection('deployment')}
@@ -220,12 +220,21 @@ export default function DesignPage() {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <SpecificationGrid
-              title="Hugging Face Spaces"
+              title="Deployment Stack"
               items={[
                 { label: "Repository", value: "kristianfischerai12345/fischgpt-sft" },
                 { label: "Format", value: "PyTorch + Safetensors" },
-                { label: "System Prompting", value: "Express.js" },
-                { label: "Hardware", value: "CPU" }
+                { label: "Backend", value: "Express.js + ChromaDB RAG" },
+                { label: "Hardware", value: "CPU Inference" }
+              ]}
+            />
+            <SpecificationGrid
+              title="RAG Pipeline"
+              items={[
+                { label: "Vector DB", value: "ChromaDB" },
+                { label: "Embeddings", value: "all-MiniLM-L6-v2" },
+                { label: "Retrieval", value: "Top-5 similarity" },
+                { label: "Context", value: "Pre-prompt injection" }
               ]}
             />
           </div>
@@ -239,22 +248,23 @@ export default function DesignPage() {
             </div>
           </InfoSection>
 
-          <InfoSection title="Usage Examples" columns={2}>
+          <InfoSection title="Enhanced Capabilities" columns={2}>
             <DetailCard
-              title="Chat Format"
+              title="RAG-Augmented Responses"
               items={[
-                'chat_format("Your question here")',
-                'Returns: "<|user|>Your question<|assistant|>"',
-                "Optimized for conversational AI",
-                "Instruction following capabilities"
+                "Contextual knowledge retrieval",
+                "Source citation capabilities",
+                "Domain-specific expertise",
+                "Reduced hallucination rate"
               ]}
             />
             <DetailCard
-              title="Generation Options"
+              title="Generation Pipeline"
               items={[
+                "Query → Embed → Retrieve → Augment",
                 "Temperature: 0.8 (recommended)",
-                "Top-p sampling: Configurable",
-                "Max length: Up to 400 tokens",
+                "Max context: 1024 tokens",
+                "Response length: Up to 400 tokens"
               ]}
             />
           </InfoSection>
