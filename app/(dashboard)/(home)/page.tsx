@@ -3,10 +3,16 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
-
+import { useEffect } from "react";
 import Paper from "./components/paper";
+import { wake } from "@/lib/services/wake-service";
 
 export default function Home() {
+
+  useEffect(() => {
+    wake(); // called immediately to wake up the GPU server
+  }, []);
+
   return (
     <div className="h-screen overflow-y-auto">
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">

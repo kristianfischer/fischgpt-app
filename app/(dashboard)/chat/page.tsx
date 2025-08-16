@@ -1,18 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { FileTextIcon } from "lucide-react";
-import { wake } from "@/lib/services/wake-service";
 import ChatContainer from "@/app/(dashboard)/chat/components/chat/chat-container";
 import ResumeContainer from "@/app/(dashboard)/chat/components/resume-container";
 
 export default function Chat() {
   const [showResume, setShowResume] = useState(false);
 
-  useEffect(() => {
-    wake(); // called immediately to wake up the GPU server
-  }, []);
 
   return (
     <div className="flex h-full relative">
