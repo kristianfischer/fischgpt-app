@@ -43,7 +43,7 @@ export default function UserInput({ inputRef, onSend, isLoading }: { inputRef: R
             </Button>
           </div>
             <p className="text-sm text-muted-foreground text-center mt-2">
-            Built from scratch with limited resources – if it gets basic facts about me wrong, just smile and nod. The first request may hit a cold start and fail, so a quick retry might be needed.
+            Built from scratch with limited resources – if it gets basic facts about me wrong, just smile and nod.
             </p>
         </div>
       </div>

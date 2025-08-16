@@ -17,7 +17,7 @@ export default function Paper() {
 
         <section className="border border-border rounded-lg p-4 text-center">
           <p>
-            <strong>Important:</strong> Please read this reflection so my servers can cold start. This can take some time...
+            <strong>Important:</strong> Please read this reflection so my servers can cold start. This can take up to 3 minutes...
             <br />
             <span>(I dont want to pay for more server time)</span>
           </p>
