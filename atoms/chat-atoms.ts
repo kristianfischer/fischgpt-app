@@ -14,7 +14,7 @@ What I've built here:
 
 > Modern Chat Interface: Built with Next.js, Shadcn, and Tailwind CSS
 
-> Express Backend: Node.js API server handling model inference and system prompting
+> Express Backend: Node.js API server handling model inference and system prompting, ChromaDB for "about me" RAG
 
 Feel free to ask me anything about AI, software development, or my projects. You can also explore my work through the social links in the header or check out my resume!
 
