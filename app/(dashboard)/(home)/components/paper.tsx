@@ -14,6 +14,14 @@ export default function Paper() {
     <div className="max-w-4xl mx-auto px-6 py-8">
 
       <article className="prose prose-lg max-w-none space-y-12">
+
+        <section className="border border-border rounded-lg p-4 text-center">
+          <p>
+            <strong>Important:</strong> Please read this reflection so my servers can cold start. This can take some time...
+            <br />
+            <span>(I dont want to pay for more server time)</span>
+          </p>
+        </section>
     
         <section className="space-y-6">
           <h2 className="text-2xl font-bold border-b border-border pb-2">{headers.inspiration}</h2>
