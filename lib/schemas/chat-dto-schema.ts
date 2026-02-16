@@ -4,18 +4,10 @@ import type { ChatResponse } from "@/lib/types/chat";
 export const chatResponseSchema = z.object({
   response: z.string(),
   metadata: z.object({
-      input_tokens: z.number(),
-      output_tokens: z.number(),
-      new_tokens: z.number(),
-      generation_time: z.number(),
-      tokens_per_second: z.number(),
-      model: z.string(),
-      parameters:  z.object({
-          temperature: z.number(),
-          max_length: z.number(),
-          top_p: z.number(),
-        }),
-    }),
+    ragUsed: z.boolean(),
+    contextLength: z.number(),
+    promptLength: z.number(),
+  }),
 });
 
 const chatDtoSchemaTransformer = (
