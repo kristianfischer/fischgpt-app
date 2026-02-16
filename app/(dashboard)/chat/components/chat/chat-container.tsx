@@ -52,8 +52,8 @@ export default function ChatContainer() {
     
           addMessage(aiMessage);
         } catch (err) {
-          console.error('Chat error:', err);
-          setError('Failed to send message. Please try again.');
+          
+          setError('Failed to send message. Please try again.\n' + err);
           
           const errorMessage: MessageType = {
             id: (Date.now() + 1).toString(),

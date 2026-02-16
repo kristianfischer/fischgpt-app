@@ -7,7 +7,5 @@ export async function chat(query: string) {
         "query": query,
     });
 
-    console.log(response);
-
     return chatDtoSchema.parse(response);
 }

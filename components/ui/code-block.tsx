@@ -1,4 +1,6 @@
+import { errorAtom } from "@/atoms/chat-atoms";
 import { Button } from "@/components/ui/button";
+import { useAtom } from "jotai";
 import { CheckIcon, CopyIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -9,6 +11,7 @@ interface CodeBlockProps {
 
 export function CodeBlock({ code, language }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const [, setError] = useAtom(errorAtom);
 
   const copyToClipboard = async () => {
     try {
@@ -16,7 +19,7 @@ export function CodeBlock({ code, language }: CodeBlockProps) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
-      console.error('Failed to copy code:', err);
+      setError('Failed to copy code. Please try again.\n' + err);
     }
   };
 
